@@ -36,17 +36,18 @@ Here's the simplest way to use OneShotLocationManager in Swift:
 //in your view controller
 var manager: OneShotLocationManager?
 
-//in viewDidLoad()
-manager = OneShotLocationManager()
-manager!.fetchWithCompletion {location, error in
+override func viewDidLoad() {
+  manager = OneShotLocationManager()
+  manager!.fetchWithCompletion {location, error in
 
-  // fetch location or an error
-  if let loc = location {
-    println(location)
-  } else if let err = error {
-    prinln(err.localizedDescription)
+    // fetch location or an error
+    if let loc = location {
+      println(location)
+    } else if let err = error {
+      prinln(err.localizedDescription)
+    }
+    self.manager = nil
   }
-  self.manager = nil
 }
 </pre>
 
