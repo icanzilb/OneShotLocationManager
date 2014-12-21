@@ -46,8 +46,8 @@ class OneShotLocationManager: NSObject, CLLocationManagerDelegate {
         case .AuthorizedWhenInUse:
             self.locationManager!.startUpdatingLocation()
         case .Denied:
-            _didComplete(nil, error: NSError.errorWithDomain(self.classForCoder.description(),
-                code: OneShotLocationManagerErrors.AuthorizationDenied.toRaw(),
+            _didComplete(nil, error: NSError(domain: self.classForCoder.description(),
+                code: OneShotLocationManagerErrors.AuthorizationDenied.rawValue,
                 userInfo: nil))
         default:
             break
@@ -62,8 +62,8 @@ class OneShotLocationManager: NSObject, CLLocationManagerDelegate {
         if let location = locations[0] as? CLLocation {
             _didComplete(location, error: nil)
         } else {
-            _didComplete(nil, error: NSError.errorWithDomain(self.classForCoder.description(),
-                code: OneShotLocationManagerErrors.InvalidLocation.toRaw(),
+            _didComplete(nil, error: NSError(domain: self.classForCoder.description(),
+                code: OneShotLocationManagerErrors.InvalidLocation.rawValue,
                 userInfo: nil))
         }
     }
